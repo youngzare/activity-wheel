@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Activity Wheel</title>
+    <style>
+        body {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            margin: 0;
+            font-family: Arial, sans-serif;
+        }
+
+        #wheel {
+            width: 200px;
+            height: 200px;
+            border-radius: 50%;
+            background-color: #3498db;
+            position: relative;
+            transition: transform 3s ease-out;
+        }
+
+        #spinButton {
+            background-color: #2ecc71;
+            color: white;
+            padding: 10px 20px;
+            font-size: 16px;
+            cursor: pointer;
+            border: none;
+            border-radius: 5px;
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+    <div id="wheel"></div>
+    <button id="spinButton" onclick="spinWheel()">Spin</button>
+
+    <script>
+        const activities = [
+            "Read a book",
+            "Go for a walk",
+            "Learn a new language",
+            "Cook a new recipe",
+            "Watch a movie",
+            "Write a journal entry",
+            "Exercise for 30 minutes",
+            "Call a friend",
+            "Listen to music",
+            "Meditate"
+        ];
+
+        const wheel = document.getElementById("wheel");
+
+        function spinWheel() {
+            const randomRotation = Math.floor(Math.random() * 360) + 360 * 5; // Spin multiple times
+            wheel.style.transform = `rotate(${randomRotation}deg)`;
+            setTimeout(() => {
+                alert(`Your activity: ${getRandomActivity()}`);
+            }, 3000); // Adjust time based on wheel rotation duration
+        }
+
+        function getRandomActivity() {
+            const randomIndex = Math.floor(Math.random() * activities.length);
+            return activities[randomIndex];
+        }
+    </script>
+</body>
+</html>
